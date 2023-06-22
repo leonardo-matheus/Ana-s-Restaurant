@@ -15,7 +15,7 @@ body {
     height: 198px;
     outline: 1px solid black;
     margin: 0 auto;
-
+    background-color: rgb(177, 177, 177);
     transform: scale(2) translateY(50%);
 }
 
