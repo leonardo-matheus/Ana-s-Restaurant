@@ -10,12 +10,14 @@ class Sprite {
 
         //Sombra
         this.shadow = new Image();
-        this.shadow.src = config.shadow || "/img/shadow.png";
+        this.useShadow = true; //!config.useShadow || false;
+        if (this.useShadow) {
+            this.shadow.src = "/img/characters/shadow.png";
+        }
         this.shadow.onload = () => {
             this.isShadowLoaded = true;
         }
-        this.useShadow = true; //!config.useShadow || false;
-
+        
 
         //Configuração de animação e estado inicial
         this.animations = config.animations || {
@@ -33,6 +35,8 @@ class Sprite {
     draw(ctx){
         const x = this.gameObject.x * 16 - 8;
         const y = this.gameObject.y * 16 - 18;
+
+        this.isShadowLoaded && ctx.drawImage(this.shadow, x, y);
 
         this.isLoaded && ctx.drawImage(this.image,
             0,0,

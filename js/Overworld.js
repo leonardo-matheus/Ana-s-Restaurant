@@ -5,7 +5,18 @@ class Overworld {
         this.ctx = this.canvas.getContext('2d');
     }
 
+startGameLoop() {
+    const step = () => {
+        requestAnimationFrame(() => {
+            step();
+        })
+    }
+    step();
+}
+
 init() {
+
+    this.startGameLoop();
     const image = new Image();
     image.onload = () => {
         this.ctx.drawImage(image, 0, 0);
@@ -17,7 +28,6 @@ init() {
         x:4,
         y:6,
     });
-
     setTimeout(() => {
         ana.sprite.draw(this.ctx);
     }, 200);
